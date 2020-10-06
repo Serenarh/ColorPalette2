@@ -1,17 +1,18 @@
 :root {
-  /* https://developer.mozilla.org/en-US/docs/Web/CSS/filter */
-  --contrast: 100%;
-  --hue: 0deg;
+  /* root is top lvl; var here are accessible to all lines */
+  --contrast: 100%; /* css variables, dynamic */
+  --hue: 0deg; /* can be chngd by sliders via JS */
 }
 
 main {
+  /* corr to main tag in html */
   align-items: center;
   background-color: #1a1d21;
   color: #333;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  width: 1160px;
+  margin: 0 auto; /* no top/bott margin & auto ctr on lft/rt */
+  width: 1160px; /* for enter main tag */
 }
 
 label {
@@ -22,11 +23,12 @@ label {
 button {
   background-color: #ffde03;
   border: none;
-  border-radius: 4px;
-  margin: 1rem 0;
+  border-radius: 4px; /* rounded corners */
+  margin: 1rem 0; /* top/bottom  lft/rt */
   padding: 0.5rem;
 }
 
+/*# refers to specific ids in html*/
 #display,
 #palette,
 #tools {
@@ -37,13 +39,17 @@ button {
   height: 910px;
 }
 
+/* flex parent--so the 5 divs below in html are flex children */
 #palette {
-  align-items: flex-end;
   background: #161616;
   display: flex;
 }
 
 /* Scope variables to only be for direct 'div' children of another 'div.' */
+
+/* #palette div tells the program to select the palette & then select the div children of the palette */
+
+/* named the variables 0-4 b/c we'll be using an array-like object in js */
 #palette div {
   --0: #fb0d1c;
   --1: #2afd2f;
@@ -51,20 +57,26 @@ button {
   --3: #fdad2a;
   --4: #f828fc;
 
+  /* creating squares */
   height: 182px;
   width: 182px;
 }
 
+/* another flex parent with div children */
 #tools {
   display: flex;
   justify-content: space-around;
   padding: 2.5rem 0;
 }
 
+/* the . indicates a css class selector */
 .grayscale {
   filter: grayscale(100%);
 }
 
+/* anything with this class has the below filters applied */
+
+/* apply a contrast filter with a value; the values come from the variables --contrast and --hue in the root: section */
 .tool-adjustments {
   filter: contrast(var(--contrast)) hue-rotate(var(--hue));
 }
