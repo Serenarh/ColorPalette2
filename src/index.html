@@ -9,11 +9,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.7.0/modern-normalize.min.css"
     />
 
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./style.css" /><!--Link to our custom styles-->
 
     <title>Palette</title>
   </head>
-  <body>
+
+  <body><!--This is what will be visible to the user in the browser-->
     <main>
       <div id="display" class="tool-adjustments"></div>
 
@@ -27,22 +28,23 @@
 
       <div id="tools">
         <div>
-          <label for="">Update Current Palette Color</label
-          ><input type="color" />
+          <label for="color">Update Current Palette Color</label
+          ><input type="color" id="color"/><!--for/id "color" for accessibility purposes-->
         </div>
         <div>
-          <label for="">Display Contrast</label
+          <label for="contrast">Display Contrast</label
           ><input
             type="range"
             min="0"
             max="200"
             value="100"
             data-tool="contrast"
-          />
+            id="contrast"
+          /><!--range slider 0-200-->
         </div>
         <div>
-          <label for="">Display Hue</label
-          ><input type="range" min="0" max="360" value="0" data-tool="hue" />
+          <label for="hue">Display Hue</label
+          ><input type="range" min="0" max="360" value="0" data-tool="hue" id="hue" /><!--range slider 0-360-->
         </div>
       </div>
 
