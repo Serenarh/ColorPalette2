@@ -6,4 +6,19 @@ const palettes = document.querySelectorAll("#palette div"); //all the divs insid
 
 const tools = document.querySelectorAll("[type='range'");
 
-console.log(tools);
+//Get the 'numbered color variables' out of 'paletteComputedStyles'
+//collection of EVERYTHING related to CSS
+const paletteComputedStyles = getComputedStyle(palettes[0]);
+
+//Loop over each 'palette' in 'palettes'
+//This is a callback function--a function that's 'called back' by another function/method
+palettes.forEach(function (palette, index) {
+  console.log(palette, index);
+  //Set its 'background color' & use its 'index' to get the correct variable name
+  //Get the property from the 'giant collection' of 'palette div' styles
+  //Set a property on the 'current palette' using a value from the 'computed style'
+  palette.style.setProperty(
+    "background-color",
+    paletteComputedStyles.getPropertyValue(`--${index}`)
+  );
+});
