@@ -23,12 +23,28 @@ palettes.forEach(function (palette, index) {
   );
 });*/
 
-//above function changed to an arrow functions
+//above function changed to an arrow function
 palettes.forEach((palette, index) => {
   palette.style.setProperty(
     "background-color",
     paletteComputedStyles.getPropertyValue(`--${index}`)
   );
-});
 
-//console.log(paletteComputedStyles.getPropertyValue("--0"));
+  palette.addEventListener("click", () => {
+    display.style.setProperty(
+      "background-color",
+      palette.style.backgroundColor
+    );
+
+    //when you do querySelector, you need the . b/c you could be working with a tag, a class, id, attributes, etc.
+    const grayPalette = document.querySelector(".grayscale");
+
+    //when you work with classList there is no . b/c only working with classes
+    if (grayPalette) {
+      grayPalette.classList.remove("grayscale");
+    }
+
+    palette.classList.add("grayscale");
+  });
+});
+// console.log(paletteComputedStyles.getPropertyValue("--0"));
