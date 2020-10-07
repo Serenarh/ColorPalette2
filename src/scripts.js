@@ -23,7 +23,7 @@ palettes.forEach(function (palette, index) {
   );
 });*/
 
-//above function changed to an arrow function
+//above function changed to an arrow functions
 palettes.forEach((palette, index) => {
   palette.style.setProperty(
     "background-color",
