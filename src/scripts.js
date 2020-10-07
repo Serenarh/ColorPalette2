@@ -10,15 +10,25 @@ const tools = document.querySelectorAll("[type='range'");
 //collection of EVERYTHING related to CSS
 const paletteComputedStyles = getComputedStyle(palettes[0]);
 
-//Loop over each 'palette' in 'palettes'
+/*//Loop over each 'palette' in 'palettes'
 //This is a callback function--a function that's 'called back' by another function/method
 palettes.forEach(function (palette, index) {
-  console.log(palette, index);
+  //console.log(palette, index);
   //Set its 'background color' & use its 'index' to get the correct variable name
   //Get the property from the 'giant collection' of 'palette div' styles
   //Set a property on the 'current palette' using a value from the 'computed style'
   palette.style.setProperty(
     "background-color",
+    paletteComputedStyles.getPropertyValue(`--${index}`)//the template literal allows the program to pull in the index of the palette currently being accessed
+  );
+});*/
+
+//above function changed to an arrow function
+palettes.forEach((palette, index) => {
+  palette.style.setProperty(
+    "background-color",
     paletteComputedStyles.getPropertyValue(`--${index}`)
   );
 });
+
+//console.log(paletteComputedStyles.getPropertyValue("--0"));
