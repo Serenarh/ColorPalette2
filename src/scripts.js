@@ -10,6 +10,20 @@ const tools = document.querySelectorAll("[type='range'");
 //collection of EVERYTHING related to CSS
 const paletteComputedStyles = getComputedStyle(palettes[0]);
 
+const removeGrays = () => {
+  //when you do querySelector, you need the . b/c you could be working with a tag, a class, id, attributes, etc.
+  const grayPalette = document.querySelector(".grayscale");
+  //when you work with classList there is no . b/c only working with classes
+  if (grayPalette) {
+    grayPalette.classList.remove("grayscale");
+  }
+};
+
+//here () indicates function
+const updateDisplay = (palette) => {
+  display.style.setProperty("background-color", palette.style.backgroundColor);
+};
+
 /*//Loop over each 'palette' in 'palettes'
 //This is a callback function--a function that's 'called back' by another function/method
 palettes.forEach(function (palette, index) {
@@ -31,19 +45,8 @@ palettes.forEach((palette, index) => {
   );
 
   palette.addEventListener("click", () => {
-    display.style.setProperty(
-      "background-color",
-      palette.style.backgroundColor
-    );
-
-    //when you do querySelector, you need the . b/c you could be working with a tag, a class, id, attributes, etc.
-    const grayPalette = document.querySelector(".grayscale");
-
-    //when you work with classList there is no . b/c only working with classes
-    if (grayPalette) {
-      grayPalette.classList.remove("grayscale");
-    }
-
+    updateDisplay(palette);
+    removeGrays();
     palette.classList.add("grayscale");
   });
 });
